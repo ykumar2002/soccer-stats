@@ -21,6 +21,8 @@ stage('Build') {
 }
 
 if(FULL_BUILD) {
+    stage('parallel tests') {
+        parallel{
     stage('Unit Tests') {   
         node {
             withEnv(["PATH+MAVEN=${tool 'm3'}/bin"]) {
@@ -29,9 +31,6 @@ if(FULL_BUILD) {
             }
         }
     }
-}
-
-if(FULL_BUILD) {
     stage('Integration Tests') {
         node {
             withEnv(["PATH+MAVEN=${tool 'm3'}/bin"]) {
@@ -39,6 +38,8 @@ if(FULL_BUILD) {
                 stash name: 'it_tests', includes: 'target/failsafe-reports/**'
             }
         }
+    }
+    }
     }
 }
 
