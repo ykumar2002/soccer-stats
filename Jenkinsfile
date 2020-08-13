@@ -21,7 +21,7 @@ stage('Build') {
 }
 
 if(FULL_BUILD) {
-    stage('Unit Tests By Yogin Shah') {   
+    stage('Unit Tests') {   
         node {
             withEnv(["PATH+MAVEN=${tool 'm3'}/bin"]) {
                 sh "mvn -B clean test"
