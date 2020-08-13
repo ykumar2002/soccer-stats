@@ -66,7 +66,7 @@ if(FULL_BUILD) {
 
 
 if(FULL_BUILD) {
-    stage('Artifact Upload to Nexus Yogin') {
+    stage('Artifact Upload to Nexus Shah Yogin') {
         node {
             unstash 'artifact'
 
